@@ -12,19 +12,27 @@ ref obj는 컴포넌트가 계속 랜더링이 되어도 unMount가 되기 전�
 
 2) fef를 통해 DOM요소에 접근 할 수 있다(focus() 이용), (JS의 querySelector()와 비슷하다.)
 */
-import React, {useState} from "react"
+import React, {useState, useRef} from "react"
 
 const UseRef = () => {
     const [count, setCount] = useState(0);
-
+    const countRef = useRef(0);
+    
+    
+    console.log(countRef); //ref는 하나의 오브젝트이기 때문에, 그 안에는 {current : 0}라는 객체를 가지고 있다. 
+    //즉, countRef.current 로 접근할 수 있다. 
+    
     const increaseCountState = () => {
         setCount(count + 1);
     };
 
+    
     return(
         <div>
             <p>State : {count}</p>
+            <p>Ref : {countRef.current}</p>
             <button onClick={increaseCountState}>state 올리기</button>
+            
         </div>
     )
 }
