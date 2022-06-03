@@ -24,15 +24,22 @@ const UseRef = () => {
     
     const increaseCountState = () => {
         setCount(count + 1);
-    };
+    };//⑵state를 +1을 해주어 값을 변경시키고 렌더링을 한 후에야 ref가 보인다.
 
-    
+    const increaseCountRef = () => {
+        countRef.current = countRef.current +1;
+        console.log('Ref: ', countRef.current);//⑴ref는 정상적으로 +1이 되어서 변경되지만 렌더링이 되지 않기에 우리에게 보이는 숫자는 0.
+    };
+    /*
+    ref 장점 : 엄청 자주 바뀌는 값을 넣어둘수 있다! (state에 넣어두면 일일히 렌더링 시키기때문에 성능저하!)
+    */
+
     return(
         <div>
             <p>State : {count}</p>
             <p>Ref : {countRef.current}</p>
             <button onClick={increaseCountState}>state 올리기</button>
-            
+            <button onClick={increaseCountRef}>ref 올리기</button>
         </div>
     )
 }
