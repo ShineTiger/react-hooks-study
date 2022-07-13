@@ -1,70 +1,15 @@
-# Getting Started with Create React App
+## useRef
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+useRef는 {current:value} 처럼 생긴 ref object를 반환해 준다. 
+ref obj는 컴포넌트가 계속 랜더링이 되어도 unMount가 되기 전까지 값을 유지한다. 
+이 특징을 이용해 두가지 상황에서 이용이 가능한데,
+1) ref는 어떠한 값을 저장하는 공간으로 쓰인다
+: [state의 변화 -> 렌더링됨 -> 컴포넌트 내부변수 초기화] state는 변경되면 재 렌더링되지만
+  [ref의 변화 -> 렌더링X -> 변수들의 값이 유지됨] ref는 변경되어도 렌더링이 되지 않고 변수값이 유지된다. 또한,
+  [state의 변화 -> 렌더링 -> 그래도 Ref의 값은 유지됨]
+  즉 불필요한 렌더링을 막을 수 있음 + 컴포넌트가 렌더링이 되어도 ref는 그대로 있음
+  => 변경시 렌더링을 발생시키지 말아야 하는 값을 다룰 때 편리하다. 
+2) fef를 통해 DOM요소에 접근 할 수 있다(focus() 이용), (JS의 querySelector()와 비슷하다.)
 
-## Available Scripts
+## useReducer
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
