@@ -21,9 +21,9 @@ function UseReducer() {
 
     //type이 다를경우 다른액션을 취하기 위해 if문 혹은 switch문을 사용한다. (출금할땐 어떻게하는가)
     switch (action.type) {
-      case "ACTION_TYPES.deposit":
+      case ACTION_TYPES.deposit:
         return state + action.payload;
-      case "ACTION_TYPES.withdraw":
+      case ACTION_TYPES.withdraw:
         return state - action.payload;
       default:
         return state; //default를 정해두면 type이 이상하게 들어올때 다른것을 보여준다.
