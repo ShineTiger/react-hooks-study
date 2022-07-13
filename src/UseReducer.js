@@ -10,15 +10,20 @@ action - 요구의 내용
 import { useState, useReducer } from "react";
 
 function UseReducer() {
+  const ACTION_TYPES = {
+    deposit: "deposit",
+    withdraw: "withdraw",
+  };
+
   //첫번째는 state, 두번째는 action(요구의 내용)을 받는다.
   const reducer = (state, action) => {
     console.log("reducer 실행", state, action);
 
     //type이 다를경우 다른액션을 취하기 위해 if문 혹은 switch문을 사용한다. (출금할땐 어떻게하는가)
     switch (action.type) {
-      case "deposit":
+      case "ACTION_TYPES.deposit":
         return state + action.payload;
-      case "withdraw":
+      case "ACTION_TYPES.withdraw":
         return state - action.payload;
       default:
         return state; //default를 정해두면 type이 이상하게 들어올때 다른것을 보여준다.
@@ -44,14 +49,14 @@ function UseReducer() {
       />
       <button
         onClick={() => {
-          dispatch({ type: "deposit", payload: number }); //payload가 액션
+          dispatch({ type: ACTION_TYPES.deposit, payload: number }); //payload가 액션
         }}
       >
         예금
       </button>
       <button
         onClick={() => {
-          dispatch({ type: "withdraw", payload: number }); //payload가 액션
+          dispatch({ type: ACTION_TYPES.withdraw, payload: number }); //payload가 액션
         }}
       >
         출금
