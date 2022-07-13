@@ -13,7 +13,16 @@ function UseReducer() {
   //첫번째는 state, 두번째는 action(요구의 내용)을 받는다.
   const reducer = (state, action) => {
     console.log("reducer 실행", state, action);
-    return state + action.payload; //이전 예금값과 현재 예금값을 더한 총액
+
+    //type이 다를경우 다른액션을 취하기 위해 if문 혹은 switch문을 사용한다. (출금할땐 어떻게하는가)
+    switch (action.type) {
+      case "deposit":
+        return state + action.payload;
+      case "withdraw":
+        return state - action.payload;
+      default:
+        return state; //default를 정해두면 type이 이상하게 들어올때 다른것을 보여준다.
+    }
   };
 
   const [number, setNumber] = useState(0);
@@ -40,7 +49,13 @@ function UseReducer() {
       >
         예금
       </button>
-      <button>출금</button>
+      <button
+        onClick={() => {
+          dispatch({ type: "withdraw", payload: number }); //payload가 액션
+        }}
+      >
+        출금
+      </button>
     </div>
   );
 }
