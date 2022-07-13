@@ -11,12 +11,15 @@ import { useState, useReducer } from "react";
 
 function UseReducer() {
   //첫번째는 state, 두번째는 action(요구의 내용)을 받는다.
-  const reducer = (state, action) => {};
+  const reducer = (state, action) => {
+    console.log("reducer 실행");
+  };
 
   const [number, setNumber] = useState(0);
 
   //useReducer는 배열을 반환해준다. (useState와 비슷)
   //useReducer가 만든 state인 money는 reducer 함수로만 수정이된다. 그리고 reducer는 useReducer의 인자가된다. reducer를 통해서 state를 수정하고 싶을 때 dispatch를 부른다.
+  //dispatch를 부르면 reducer가 호출이 되는데 이때 두번째 매개변수인 action이 전달되고, state를 변경시킨다.
   const [money, dispatch] = useReducer(reducer, 0); //첫번째 매개변수는 reducer, 두번째인자는 money의 초기값
 
   return (
@@ -29,7 +32,13 @@ function UseReducer() {
         onChange={(e) => setNumber(parseInt(e.target.value))}
         step="1000"
       />
-      <button>예금</button>
+      <button
+        onClick={() => {
+          dispatch();
+        }}
+      >
+        예금
+      </button>
       <button>출금</button>
     </div>
   );
