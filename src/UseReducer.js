@@ -12,7 +12,8 @@ import { useState, useReducer } from "react";
 function UseReducer() {
   //첫번째는 state, 두번째는 action(요구의 내용)을 받는다.
   const reducer = (state, action) => {
-    console.log("reducer 실행");
+    console.log("reducer 실행", state, action);
+    return state + action.payload; //이전 예금값과 현재 예금값을 더한 총액
   };
 
   const [number, setNumber] = useState(0);
@@ -34,7 +35,7 @@ function UseReducer() {
       />
       <button
         onClick={() => {
-          dispatch();
+          dispatch({ type: "deposit", payload: number }); //payload가 액션
         }}
       >
         예금
